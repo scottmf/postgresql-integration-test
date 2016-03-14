@@ -1,6 +1,6 @@
 # postgresql-integration-test
 
-Wraps <a href='https://github.com/yandex-qatools/postgresql-embedded'>PostgreSQL Embedded by yandex-qatools</a> using Spring Boot
+Wraps <a href='https://github.com/yandex-qatools/postgresql-embedded'>PostgreSQL Embedded by yandex-qatools</a> using <a href='https://github.com/spring-projects/spring-boot'>Spring Boot</a>
 
 ## To Use
 
