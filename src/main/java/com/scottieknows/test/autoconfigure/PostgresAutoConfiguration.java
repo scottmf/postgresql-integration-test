@@ -177,7 +177,9 @@ public class PostgresAutoConfiguration implements ApplicationListener<Applicatio
         try (BufferedReader reader = new BufferedReader(new FileReader(resource.getFile()))) {
             String line;
             while (null != (line = reader.readLine())) {
-                builder.append(line);
+                if (!line.startsWith("--")) {
+                    builder.append(line);
+                }
             }
         }
         return Arrays.asList(builder.toString().split(";"));
