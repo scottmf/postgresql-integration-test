@@ -17,7 +17,6 @@ package com.scottieknows.test.autoconfigure;
 
 import static java.lang.String.*;
 import static java.util.Optional.*;
-import static org.junit.Assert.*;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -151,7 +150,9 @@ public class PostgresAutoConfiguration implements ApplicationListener<Applicatio
             throws SQLException, IOException {
         String postExecSqlFiles = props.getPostExecSqlFiles();
         try (Connection conn = DriverManager.getConnection(url)) {
-            assertNotNull(conn);
+            if (conn == null) {
+                throw new RuntimeException(format("connection retrieved from url %s", url));
+            }
             if (postExecSqlFiles != null && !postExecSqlFiles.trim().isEmpty()) {
                 String[] files = postExecSqlFiles.split(",");
                 for (String file : files) {
